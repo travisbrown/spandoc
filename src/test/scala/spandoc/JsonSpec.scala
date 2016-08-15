@@ -385,7 +385,7 @@ class JsonSpec extends FreeSpec
   }
 
   "double sanity check" in {
-    Encoder[Double].apply(0.0) should be(parse("0.0").toOption.get)
+    cats.Eq[Json].eqv(Encoder[Double].apply(0.0), parse("0.0").toOption.get) should be(true)
   }
 }
 
